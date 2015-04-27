@@ -25,11 +25,10 @@ soup = BeautifulSoup(html)
 # find all entries with the required class
 page = soup.find('section',{'id':'dataset-resources'})
 blocks = page.findAll('li', {'class':'resource-item'})
-print blocks
 
 for block in blocks:
-        title = block.text
-        print title
+        title = block.text.strip()
+        print title.encode('utf8')
 	links = block.findall('a',href=True)
 	for link in links:
 	        url = link['href']
