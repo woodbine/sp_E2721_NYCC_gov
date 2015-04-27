@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 # Set up variables
 entity_id = "E2721_NYCC_gov"
-url = "httphttps://www.datanorthyorkshire.org/dataset/nycc-council-expenditure"
+url = "https://www.datanorthyorkshire.org/dataset/nycc-council-expenditure"
 
 # Set up functions
 def convert_mth_strings ( mth_string ):
