@@ -27,7 +27,7 @@ page = soup.find('section',{'id':'dataset-resources'})
 blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
-        title = block.find('a',title=True).text # get the contents of the first link
+        title = block.find('a',title=True).contents[0] # get the contents of the first link
         print title.encode('utf8')
         
         '''
