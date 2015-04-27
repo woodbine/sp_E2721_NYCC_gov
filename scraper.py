@@ -28,6 +28,7 @@ blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
         title = block.text
+        print title
 	links = block.findall('a',href=True)
 	for link in links:
 	        url = link['href']
