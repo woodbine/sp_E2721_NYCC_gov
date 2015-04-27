@@ -27,9 +27,9 @@ page = soup.find('section',{'id':'dataset-resources'})
 blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
-        title = block.find('a',title=True).contents[0] # get the contents of the first link
+        title = block.find('a',title=True).contents[0].strip() # get the contents of the first link
         if 'Spending over' in title:
-		links = block.findall('a',href=True)
+		links = block.findAll('a',href=True)
 		for link in links:
 		        url = link['href']
 		        if '.csv' in url:
