@@ -28,14 +28,13 @@ blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
         title = block.text.strip()
-        print title.encode('utf8')
+        print "title: " + title.encode('utf8')
 	links = block.findall('a',href=True)
 	for link in links:
 	        url = link['href']
 	        if '.csv' in url:
                 	#  grab the data out of the onclick instrution from javascript
                 	#  clean up the onclick data
-                	title = link.contents[0]
                 	# create the right strings for the new filename
                 	csvYr = title.split(' ')[-1]
                 	csvMth = title.split(' ')[-2][:3]
