@@ -29,6 +29,8 @@ blocks = page.findAll('li', {'class':'resource-item'})
 for block in blocks:
         title = block.text.strip()
         print "title: " + title.encode('utf8')
+        
+        '''
 	links = block.findall('a',href=True)
 	for link in links:
 	        url = link['href']
@@ -44,3 +46,4 @@ for block in blocks:
                 	todays_date = str(datetime.now())
                 	scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
                 	print filename
+	'''
