@@ -23,7 +23,7 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-page = soup.find('div',{'class':'module-content'})
+page = soup.find('section',{'id':'dataset-resources'})
 blocks = page.findAll('li', {'class':'resource-item'})
 print blocks
 
