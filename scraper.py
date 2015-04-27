@@ -28,22 +28,19 @@ blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
         title = block.find('a',title=True).contents[0] # get the contents of the first link
-        print title.encode('utf8')
-        
-        '''
-	links = block.findall('a',href=True)
-	for link in links:
-	        url = link['href']
-	        if '.csv' in url:
-                	#  grab the data out of the onclick instrution from javascript
-                	#  clean up the onclick data
-                	# create the right strings for the new filename
-                	csvYr = title.split(' ')[-1]
-                	csvMth = title.split(' ')[-2][:3]
-                	csvMth = csvMth.upper()
-                	csvMth = convert_mth_strings(csvMth);
-                	filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
-                	todays_date = str(datetime.now())
-                	scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
-                	print filename
-	'''
+        if 'Spending over' in title:
+		links = block.findall('a',href=True)
+		for link in links:
+		        url = link['href']
+		        if '.csv' in url:
+	                	#  grab the data out of the onclick instrution from javascript
+	                	#  clean up the onclick data
+	                	# create the right strings for the new filename
+	                	csvYr = title.split(' ')[-1]
+	                	csvMth = title.split(' ')[-2][:3]
+	                	csvMth = csvMth.upper()
+	                	csvMth = convert_mth_strings(csvMth);
+	                	filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
+	                	todays_date = str(datetime.now())
+	                	scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
+	                	print filename
