@@ -28,7 +28,7 @@ blocks = page.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
         title = block.find('a',title=True).text # get the contents of the first link
-        print title
+        print title.encode('utf8')
         
         '''
 	links = block.findall('a',href=True)
