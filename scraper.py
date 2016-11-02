@@ -84,7 +84,7 @@ def convert_mth_strings ( mth_string ):
 #### VARIABLES 1.0
 
 entity_id = "E2721_NYCC_gov"
-url = "https://www.datanorthyorkshire.org/dataset/nycc-council-expenditure"
+url = "http://hub.datanorthyorkshire.org/dataset/nycc-council-expenditure"
 errors = 0
 data = []
 
@@ -96,8 +96,7 @@ soup = BeautifulSoup(html, 'lxml')
 
 #### SCRAPE DATA
 
-page = soup.find('section',{'id':'dataset-resources'})
-blocks = page.findAll('li', {'class':'resource-item'})
+blocks = soup.findAll('li', {'class':'resource-item'})
 
 for block in blocks:
     title = block.find('a',title=True).contents[0].strip()
@@ -108,6 +107,8 @@ for block in blocks:
             if '.csv' in url:
                 csvYr = title.split(' ')[-1]
                 csvMth = title.split(' ')[-2][:3]
+                if '2016/17' in csvYr:
+                    csvYr = '2016'
                 csvMth = csvMth.upper()
                 csvMth = convert_mth_strings(csvMth.upper())
                 data.append([csvYr, csvMth, url])
