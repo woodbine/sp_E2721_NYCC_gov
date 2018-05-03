@@ -105,9 +105,11 @@ for block in blocks:
         for link in links:
             url = link['href']
             if '.csv' in url:
-                csvYr = title.split(' ')[-1]
-                csvMth = title.split(' ')[-2][:3]
+                csvYr = title.replace(' CSV', '').split(' ')[-1]
+                csvMth = title.replace(' CSV', '').split(' ')[-2][:3]
                 if '2016/17' in csvYr:
+                    csvYr = '2016'
+                if '2016-17' in csvYr:
                     csvYr = '2016'
                 csvMth = csvMth.upper()
                 csvMth = convert_mth_strings(csvMth.upper())
